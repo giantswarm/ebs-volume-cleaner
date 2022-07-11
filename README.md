@@ -20,7 +20,7 @@ The algorithm is as follows:
 
 3. In order to check which EBS volumes should be deleted you have to `./clean_ebs.sh <cluster_id>`
 
-4. Check that the volumes to not exist in the cluster with a command like `kubectl get pv -A -o yaml | grep vol-02df29c83398b7a1b`
+4. Check that the volumes are in status `available` and do not exist in the cluster with a command like `kubectl get pv -A -o yaml | grep vol-02df29c83398b7a1b`.
 
 5. Delete the volumes executing the commands shown by the script.
 
