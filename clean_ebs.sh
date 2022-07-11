@@ -10,11 +10,13 @@ volumesInCluster2_amount=$(echo $volumesInCluster2 | tr ' ' '\n' | wc -l)
 total_incluster=$((volumesInCluster_amount + volumesInCluster2_amount))
 
 etcdVolumesInAws=$(aws ec2 describe-volumes --no-paginate --filters=Name=tag:kubernetes.io/cluster/$CLUSTER,Values=owned --filters=Name=tag:aws:cloudformation:stack-name,Values=cluster-$CLUSTER-tccpn --query "Volumes[*].{ID:VolumeId}" | jq .[].ID -r | sort | uniq -u)
+etcdVolumesInAws_amount=$(echo $etcdVolumesInAws | tr ' ' '\n' | wc -l | sed 's/ //g' )
 
 volumesInAws=$(aws ec2 describe-volumes --no-paginate --filters=Name=tag:kubernetes.io/cluster/$CLUSTER,Values=owned --query "Volumes[*].{ID:VolumeId}" | jq .[].ID -r | sort | uniq -u)
 volumesInAws_amount=$(echo $volumesInAws | tr ' ' '\n' | wc -l | sed 's/ //g' )
 
 echo "There are $total_incluster in the cluster $CLUSTER"
+echo "There are $etcdVolumesInAws_amount ETCD volumes in the AWS account of cluster $CLUSTER"
 echo "There are $volumesInAws_amount in the AWS account of cluster $CLUSTER"
 
 missing=(`echo ${volumesInCluster[@]} ${volumesInCluster2[@]} ${etcdVolumesInAws[@]} ${volumesInAws[@]} | tr ' ' '\n' | sort | uniq -u`)

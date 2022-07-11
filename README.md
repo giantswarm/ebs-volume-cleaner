@@ -29,11 +29,12 @@ The algorithm is as follows:
 ```
 $> ./clean_ebs.sh test1
 
-There are 15 in the cluster test1
+There are 12 in the cluster test1
+There are 3 ETCD volumes in the AWS account of cluster deu01
 There are 17 in the AWS account of cluster test1
 The are 2 volumes not present in the kubernetes cluster:
-vol-7ad8sdh3322731j22
-vol-123578a92se99esae
+Volume vol-7ad8sdh3322731j22 is in status: available
+Volume vol-123578a92se99esae is in status: available
 If you want to delete the volumes execute the following commands:
 aws ec2 delete-volume --volume-id vol-7ad8sdh3322731j22
 aws ec2 delete-volume --volume-id vol-123578a92se99esae
