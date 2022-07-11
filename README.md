@@ -24,8 +24,10 @@ The algorithm is as follows:
 # Example output
 
 ```
-There are 15 in the cluster deu01
-There are 17 in the AWS account of cluster deu01
+$> ./clean_ebs.sh test1
+
+There are 15 in the cluster test1
+There are 17 in the AWS account of cluster test1
 The are 2 volumes not present in the kubernetes cluster:
 vol-7ad8sdh3322731j22
 vol-123578a92se99esae
