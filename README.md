@@ -7,6 +7,7 @@ The script does not automatically delete the EBS volumes it will only show the c
 The algorithm is as follows:
 - Gets all the EBS volume ids from the API
 - Get all EBS volumes from aws with the tag `kubernetes.io/cluster/$CLUSTER`
+- Get all EBS volumes for ETCD
 - Show the ids of the volumes not found in the kubernetes cluster
 - Show the commands to delete the volumes that are not found in the cluster
 
