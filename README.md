@@ -1,5 +1,7 @@
 # EBS Volume cleaner
 
+**Use this tool with caution, it might delete real data. Deleting an EBS volumes it not reversible.**
+
 The script does not automatically delete the EBS volumes it will only show the commands to do it manually.
 
 The algorithm is as follows:
